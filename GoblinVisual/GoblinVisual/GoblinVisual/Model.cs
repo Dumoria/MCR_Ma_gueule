@@ -125,7 +125,14 @@ public class Model
 
     public void supprimerMaillon(Goblin goblin)
     {
-        employes.get((int)goblin.getEmploi()).remove(goblin);
+        List<Goblin> collegues = employes.get((int)goblin.getEmploi());
+        if (collegues.Length == 1)
+        {
+            Console.writeLine("Can't fire the last employe");
+        }
+        else {
+            employes.get((int)goblin.getEmploi()).remove(goblin);
+        }
     }
 
 }
