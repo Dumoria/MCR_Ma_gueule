@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GoblinVisual
+﻿public enum Emploi
 {
-    class Class1
-    {
-    }
+    Receptionniste = 0,
+    Coffrier = 1,
+    Tresorier = 2,
+    Tamponeur = 3,
+    Chef = 4
 }

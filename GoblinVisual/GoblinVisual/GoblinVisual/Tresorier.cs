@@ -1,4 +1,4 @@
-﻿public class Tresorier extends Goblin
+﻿public class Tresorier : Goblin
 {
 
     Model model;
@@ -8,17 +8,16 @@
     super(emploi, salaire, collegue, superieur, employe);
 }
 
-@Override
-    public void requeteTerminee(Requete requete)
-{
-    if (requete.getType().Name == "Pret")
-    {
-        model.addPrets(requete.getSomme());
+
+    public void requeteTerminee(Requete requete){
+        if (requete.getType().Name == "Pret")
+        {
+            model.addPrets(requete.getSomme());
+        }
+        else
+        {
+            model.addCoffre(requete.getSomme());
+        }
+        super.requeteTerminee(requete);
     }
-    else
-    {
-        model.addCoffre(requete.getSomme());
-    }
-    super.requeteTerminee(requete);
-}
 }

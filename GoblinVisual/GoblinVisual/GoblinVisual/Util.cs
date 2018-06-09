@@ -1,10 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
-namespace GoblinVisual
-{
-    class Util_cs
-    {
-    }
-}
+int NB_POSTES = 5;

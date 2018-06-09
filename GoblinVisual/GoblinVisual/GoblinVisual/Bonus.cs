@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GoblinVisual
+﻿
+public class Bonus
 {
-    class Bonus
+
+    private int cost;
+
+
+    public int getCost()
     {
+        return cost;
     }
 }

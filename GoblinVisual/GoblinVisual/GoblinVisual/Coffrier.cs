@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GoblinVisual
+﻿public class Coffrier : Goblin
 {
-    class Coffrier
-    {
-    }
+    public Coffrier(Emploi emploi, int salaire, Goblin collegue, Goblin superieur, Goblin employe)
+{
+    super(emploi, salaire, collegue, superieur, employe);
+}
 }

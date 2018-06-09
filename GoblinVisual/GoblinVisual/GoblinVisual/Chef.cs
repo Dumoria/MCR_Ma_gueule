@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GoblinVisual
+﻿public class Chef : Goblin
 {
-    class Chef
-    {
-    }
+
+    public Chef(Emploi emploi, int salaire, Goblin collegue, Goblin superieur, Goblin employe)
+{
+    super(emploi, salaire, collegue, superieur, employe);
+}
 }

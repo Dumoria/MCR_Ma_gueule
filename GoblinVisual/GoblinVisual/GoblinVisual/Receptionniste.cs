@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GoblinVisual
+﻿public class Receptionniste : Goblin
 {
-    class Receptionniste
-    {
-    }
+    public Receptionniste(Emploi emploi, int salaire, Goblin collegue, Goblin superieur, Goblin employe)
+{
+    super(emploi, salaire, collegue, superieur, employe);
+}
 }
