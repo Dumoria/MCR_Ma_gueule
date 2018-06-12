@@ -4,7 +4,7 @@
 
 namespace MODEL{
 	
-	abstract class CertificatFortune : Requete {
+	abstract class CertificatFortune : Cash {
 
 		public CertificatFortune (int somme) : base(somme) {}
 

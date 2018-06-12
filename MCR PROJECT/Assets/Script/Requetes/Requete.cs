@@ -39,6 +39,9 @@ namespace MODEL{
 			return false;
 		}
 
+		public bool doitTraiter(Goblin g) {
+			return false;
+		}
 
 	}
 }

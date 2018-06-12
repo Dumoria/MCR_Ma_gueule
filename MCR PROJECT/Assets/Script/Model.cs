@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System;
 using System.Timers;
+using System.Collections;
 
 namespace MODEL{
 	public class Model
@@ -14,10 +15,10 @@ namespace MODEL{
 	    /**
 	     * nombre de classe hierarchique dans la banque
 	     */
-	    private int argentCoffre = 3000;
+	    private double argentCoffre = 3000;
 	    private int nbRequetes = 0;
 
-	    private List<List<Goblin>> employes = new List<List<Goblin>>();
+		private ArrayList employes = new ArrayList();
 	    private List<Requete> requetes = new List<Requete>();
 	    private Random random = new Random();
 
@@ -40,7 +41,7 @@ namespace MODEL{
 			//requetesFlot.Start;
 	    }
 
-	    public void ajouterCoffre(int nbGold)
+	    public void ajouterCoffre(double nbGold)
 	    {
 	        argentCoffre += nbGold;
 	    }
@@ -56,9 +57,9 @@ namespace MODEL{
 	        addStress(20);
 	    }
 
-	    public int getSommeSalaires()
+	    public double getSommeSalaires()
 	    {
-	        int somme = 0;
+	        double somme = 0;
 	        for (int i = 0; i < employes.Count; ++i)
 	        {
 	            List<Goblin> classe = employes[i];

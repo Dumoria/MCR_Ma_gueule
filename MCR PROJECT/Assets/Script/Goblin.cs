@@ -8,7 +8,7 @@ namespace MODEL{
 	    protected int id;
 
 		protected Emploi emploi;
-		protected int salaire;
+		protected double salaire;
 
 		protected int stress;
 		protected bool greviste;
@@ -21,7 +21,7 @@ namespace MODEL{
 		protected Timer timer;
 
 
-	    public Goblin(Model model, Emploi emploi, int salaire, Goblin collegue, Goblin superieur)
+	    public Goblin(Model model, Emploi emploi, double salaire, Goblin collegue, Goblin superieur)
 	    {
 			this.model = model;
 	        id = nextId++;
@@ -125,12 +125,12 @@ namespace MODEL{
 	        this.emploi = emploi;
 	    }
 
-	    public int getSalaire()
+	    public double getSalaire()
 	    {
 	        return salaire;
 	    }
 
-	    public void setSalaire(int salaire)
+	    public void setSalaire(double salaire)
 	    {
 	        this.salaire = salaire;
 	    }
