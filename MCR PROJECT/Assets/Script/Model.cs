@@ -23,7 +23,6 @@ namespace MODEL{
 
 	    private Difficulte difficulte;
 	    private Timer requetesFlot;
-
 		private Goblin currentGolbin;
 
 	    public Model()
