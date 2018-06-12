@@ -3,36 +3,36 @@
 
     Model model;
 
-    public Tresorier(Emploi emploi, int salaire, Goblin collegue, Goblin superieur, Goblin employe)
+    public new Tresorier(Emploi emploi, int salaire, Goblin collegue, Goblin superieur, Goblin employe)
     {
         super(emploi, salaire, collegue, superieur, employe);
     }
 
-    public void valider(Retrait retrait)
+    public new void valider(Retrait retrait)
     {
-        occupe = false;
         model.addCoffre(-1 * requete.getSomme());
         passerSuperieur(requete);
+        occupe = false;
     }
 
-    public void valider(Depot depot)
+    public new void valider(Depot depot)
     {
-        occupe = false;
         model.addCoffre(requete.getSomme());
         passerSuperieur(requete);
+        occupe = false;
     }
 
-    public void valider(Remboursement remboursement)
+    public new void valider(Remboursement remboursement)
     {
-        occupe = false;
         model.addCoffre(requete.getSomme());
         passerSuperieur(requete);
+        occupe = false;
     }
 
-    public void valider(Emprunt emprunt)
+    public new void valider(Emprunt emprunt)
     {
-        occupe = false;
         model.addCoffre(-1 * requete.getSomme());
         passerSuperieur(requete);
+        occupe = false;
     }
 }

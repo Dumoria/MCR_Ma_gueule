@@ -6,7 +6,13 @@
         super(emploi, salaire, collegue, superieur, employe);
     }
 
-    public void passerSuperieur(Requete requete)
+    public new void valider(Salaire salaire)
+    {
+        model.ajouterCoffre(-1 * model.getSommeSalaires());
+        occupe = false;
+    }
+
+    public new void passerSuperieur(Requete requete)
     {
         
     }
