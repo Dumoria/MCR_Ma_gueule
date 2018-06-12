@@ -46,10 +46,10 @@ namespace MODEL{
 	        argentCoffre += nbGold;
 	    }
 
-	    public Goblin getEmploye(int indexEmploi, int indexEmploye)
+	    /*public Goblin getEmploye(int indexEmploi, int indexEmploye)
 	    {
-	        return employes[indexEmploi][indexEmploye];
-	    }
+			return ((List<Goblin>) employes[indexEmploi])[indexEmploye];
+	    }*/
 
 	    public void seFaireBraquer()
 	    {
@@ -62,10 +62,10 @@ namespace MODEL{
 	        double somme = 0;
 	        for (int i = 0; i < employes.Count; ++i)
 	        {
-	            List<Goblin> classe = employes[i];
-				for (int j = 0; j < employes[i].Count; ++j)
+				List<Goblin> classe = (List<Goblin>) employes[i];
+				for (int j = 0; j < classe.Count; ++j)
 	            {
-	                somme += employes[i][j].getSalaire();
+					somme += classe[j].getSalaire();
 	            }
 	        }
 	        return somme;
@@ -75,8 +75,8 @@ namespace MODEL{
 	    {
 	        for(int i = 0; i < employes.Count; ++i)
 	        {
-	            List<Goblin> classe = employes[i];
-	            for (int j = 0; j < employes[i].Count; ++j)
+				List<Goblin> classe = (List<Goblin>) employes[i];
+				for (int j = 0; j < classe.Count; ++j)
 	            {
 	                int stress = classe[j].getStress() + prc;
 	                if(stress < 0)
@@ -99,7 +99,7 @@ namespace MODEL{
 
 	        requetes.Add(generateARequest());
 
-			employes [0] [0].handleRequest (requetes[0]);
+			((List<Goblin>) employes[0])[0].handleRequest(requetes[0]);
 	        requetes.RemoveAt(0);
 
 	        //requetesFlot = new Timer(2000);
@@ -110,25 +110,25 @@ namespace MODEL{
 	    public Requete generateARequest()
 	    {
 	        int typeRequete = random.Next() % 9;
-	        Requete requete;
+			Requete requete;
 	        ++nbRequetes;
 
 	        switch (typeRequete)
 	        {
 	            case 0:
-	                requete = new CertificatFortune();
+	                //requete = new CertificatFortune();
 	                break;
 	            case 1:
-	                requete = new Retrait();
+					//requete = new Retrait();
 	                break;
 	            case 2:
-	                requete = new Depot();
+				//requete = new Depot();
 	                break;
 	            case 3:
-	                requete = new Remboursement();
+				//requete = new Remboursement();
 	                break;
 	            case 4:
-	                requete = new Emprunt();
+				//requete = new Emprunt();
 	                break;
 	            case 5:
 	                requete = new PayementSalaire();
@@ -142,16 +142,17 @@ namespace MODEL{
 	            case 8:
 	                requete = new TraiterBeuglantes();
 	                break;
-	            default:
-	                break;
+				default:
+					break;
+	                
 	        }
-	        return requete;
+			return requete;
 
 	    }
 
 	    public void engager(Goblin goblin)
 	    {
-	        List<Goblin> tmp = employes[(int)goblin.getEmploi()];
+			List<Goblin> tmp = (List<Goblin>) employes[(int)goblin.getEmploi()];
 	        tmp[tmp.Count - 1].setCollegue(goblin);
 	        goblin.setSuperieur(tmp[0].getSuperieur());
 	        tmp.Add(goblin);
@@ -159,14 +160,14 @@ namespace MODEL{
 
 	    public bool virer(Goblin goblin)
 	    {
-	        List<Goblin> collegues = employes[(int)goblin.getEmploi()];
+			List<Goblin> collegues = (List<Goblin>) employes[(int)goblin.getEmploi()];
 			if (collegues.Count == 1)
 	        {
 				Console.WriteLine("Can't fire the last employe");
 	            return false;
 	        }
 	        else {
-				employes[(int)goblin.getEmploi()].Remove(goblin);
+				((List<Goblin>) employes[(int)goblin.getEmploi()]).Remove(goblin);
 	            return true;
 	        }
 	    }
@@ -176,6 +177,7 @@ namespace MODEL{
 			if (bonus.getCost() > argentCoffre)
 				return false;
 			ajouterCoffre(bonus.getCost());
+			return true;
 			//prob traitement
 		}
 
