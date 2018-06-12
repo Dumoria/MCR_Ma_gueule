@@ -7,7 +7,7 @@
 	       
 	    }
 
-	    public new void valider(Salaire salaire)
+	    public new void valider(PayementSalaire salaire)
 	    {
 	        model.ajouterCoffre(-1 * model.getSommeSalaires());
 	        occupe = false;

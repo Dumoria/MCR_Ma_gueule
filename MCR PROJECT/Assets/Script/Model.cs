@@ -35,9 +35,9 @@ namespace MODEL{
 
 	        difficulte = new Difficulte(5, 40, 5); //Predecl pour diff facile
 
-	        requetesFlot = new Timer(difficulte.getDebitRequetes());
-	        requetesFlot.Elapsed += generateSomeRequests(); 
-			requetesFlot.Start;
+	        //requetesFlot = new Timer(difficulte.getDebitRequetes());
+	        //requetesFlot.Elapsed += generateSomeRequests(); 
+			//requetesFlot.Start;
 	    }
 
 	    public void ajouterCoffre(int nbGold)
@@ -101,12 +101,12 @@ namespace MODEL{
 			employes [0] [0].handleRequest (requetes[0]);
 	        requetes.RemoveAt(0);
 
-	        requetesFlot = new Timer(2000);
-	        requetesFlot.Elapsed += generateSomeRequests();
-			requetesFlot.Start;
+	        //requetesFlot = new Timer(2000);
+	        //requetesFlot.Elapsed += generateSomeRequests();
+			//requetesFlot.Start;
 	    }
 
-	    public Request generateARequest()
+	    public Requete generateARequest()
 	    {
 	        int typeRequete = random.Next() % 9;
 	        Requete requete;

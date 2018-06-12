@@ -1,5 +1,4 @@
-﻿using Retrait;
-
+﻿
 namespace MODEL{
 	public class Tresorier : Goblin
 	{
@@ -12,29 +11,29 @@ namespace MODEL{
 
 	    public new void valider(Retrait retrait)
 	    {
-	        model.ajouterCoffre(-1 * requete.getSomme());
-	        passerSuperieur(requete);
+			model.ajouterCoffre(-1 * retrait.getSomme());
+			passerSuperieur(retrait);
 	        occupe = false;
 	    }
 
 	    public new void valider(Depot depot)
 	    {
-			model.ajouterCoffre(requete.getSomme());
-	        passerSuperieur(requete);
+			model.ajouterCoffre(depot.getSomme());
+			passerSuperieur(depot);
 	        occupe = false;
 	    }
 
 	    public new void valider(Remboursement remboursement)
 	    {
-			model.ajouterCoffre(requete.getSomme());
-	        passerSuperieur(requete);
+			model.ajouterCoffre(remboursement.getSomme());
+			passerSuperieur(remboursement);
 	        occupe = false;
 	    }
 
 	    public new void valider(Emprunt emprunt)
 	    {
-			model.ajouterCoffre(-1 * requete.getSomme());
-	        passerSuperieur(requete);
+			model.ajouterCoffre(-1 * emprunt.getSomme());
+			passerSuperieur(emprunt);
 	        occupe = false;
 	    }
 	}

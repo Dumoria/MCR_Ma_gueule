@@ -4,7 +4,7 @@
 
 
 namespace MODEL{
-	class PayementSalaire : Requete {
+	public class PayementSalaire : Requete {
 
 		
 		public override bool doitTraiter(Tresorier t) {

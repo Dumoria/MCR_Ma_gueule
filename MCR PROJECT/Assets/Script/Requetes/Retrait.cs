@@ -3,7 +3,7 @@
 
 
 namespace MODEL{
-	class Retrait : Cash {
+	public class Retrait : Cash {
 
 		public Retrait (int somme) : base(somme) {}
 

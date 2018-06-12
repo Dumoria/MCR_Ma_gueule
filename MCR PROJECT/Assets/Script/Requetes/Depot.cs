@@ -4,7 +4,7 @@
 
 
 namespace MODEL{
-	class Depot : Cash {
+	public class Depot : Cash {
 
 		public Depot (int somme) : base(somme) {}
 

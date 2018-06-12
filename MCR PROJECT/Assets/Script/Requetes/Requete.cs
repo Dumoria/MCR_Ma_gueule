@@ -11,7 +11,7 @@
  * @modificator Max
  */
 namespace MODEL{
-	abstract class Requete
+	public abstract class Requete
 	{
 
 
@@ -19,23 +19,23 @@ namespace MODEL{
 	     * passé doit traiter la requête ou non. Redéfinir la
 	     * méthode pour chaque type devant traiter la requête.
 	     */
-		public bool doitTraiter(Receptionniste r) {
+		public virtual bool doitTraiter(Receptionniste r) {
 			return false;
 		}
 
-		public bool doitTraiter(Coffrier c) {
+		public virtual bool doitTraiter(Coffrier c) {
 			return false;
 		}
 
-		public bool doitTraiter(Tresorier t) {
+		public virtual bool doitTraiter(Tresorier t) {
 			return false;
 		}
 
-		public bool doitTraiter(Tamponeur t) {
+		public virtual bool doitTraiter(Tamponeur t) {
 			return false;
 		}
 		
-		public bool doitTraiter(Chef c) {
+		public virtual bool doitTraiter(Chef c) {
 			return false;
 		}
 

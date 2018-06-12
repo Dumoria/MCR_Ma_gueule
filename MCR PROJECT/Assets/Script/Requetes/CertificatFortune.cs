@@ -12,7 +12,7 @@ namespace MODEL{
 			return true;
 		}
 
-		public bool doitTraiter(Tamponeur t) {
+		public override bool doitTraiter(Tamponeur t) {
 			return true;
 		}
 	}
