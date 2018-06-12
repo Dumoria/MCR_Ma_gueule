@@ -51,6 +51,20 @@ public class Model
         addStress(20);
     }
 
+    public int getSommeSalaires()
+    {
+        int somme = 0;
+        for (int i = 0; i < employes.Length; ++i)
+        {
+            List<Goblin> classe = employes[i];
+            for (int j = 0; j < employes[i].Length; ++j)
+            {
+                somme += employes[indexEmploi][indexEmploye].getSalaire();
+            }
+        }
+        return somme;
+    }
+
     public void addStress(int prc)
     {
         for(int i = 0; i < employes.Length; ++i)
