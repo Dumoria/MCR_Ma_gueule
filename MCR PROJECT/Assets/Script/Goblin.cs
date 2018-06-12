@@ -5,20 +5,20 @@ namespace MODEL{
 	{
 
 	    static int nextId = 0;
-	    int id;
+	    protected int id;
 
-	    Emploi emploi;
-	    int salaire;
+		protected Emploi emploi;
+		protected int salaire;
 
-	    int stress;
-	    bool greviste;
-	    bool occupe;
+		protected int stress;
+		protected bool greviste;
+		protected bool occupe;
 
-	    Goblin collegue;
-	    Goblin superieur;
+		protected Goblin collegue;
+		protected Goblin superieur;
 
-	    Model model;
-	    Timer timer;
+		protected Model model;
+		protected Timer timer;
 
 
 	    public Goblin(Model model, Emploi emploi, int salaire, Goblin collegue, Goblin superieur)
