@@ -9,15 +9,10 @@
 }
 
 
-    public void requeteTerminee(Requete requete){
-        if (requete.getType().Name == "Pret")
-        {
-            model.addPrets(requete.getSomme());
-        }
-        else
-        {
-            model.addCoffre(requete.getSomme());
-        }
-        super.requeteTerminee(requete);
+    public void valider(Requete requete)
+    {
+        occupe = false;
+        model.addCoffre(requete.getSomme());
+        passerSuperieur(requete);
     }
 }

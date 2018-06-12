@@ -10,7 +10,6 @@ public class Model
     /**
      * nombre de classe hierarchique dans la banque
      */
-    private int argentPrets = 0;
     private int argentCoffre = 3000;
     private int nbRequetes = 0;
 
@@ -41,6 +40,11 @@ public class Model
         argentCoffre += nbGold;
     }
 
+    public Goblin getEmploye(int indexEmploi, int indexEmploye)
+    {
+        return employes[indexEmploi][indexEmploye];
+    }
+
     public void reduceStress(int prc)
     {
         for(int i = 0; i < employes.Length; ++i)
@@ -68,8 +72,8 @@ public class Model
         employes.get(0).get(0).handleRequest(requetes.get(0));
         requetes.RemoveAt(0);
 
-        requetesFlot = new Timer();
-        requetesFlot.Elapsed += generateRequest();
+        requetesFlot = new Timer(2000);
+        requetesFlot.Elapsed += generateRequests();
         requetesFlot.start();
     }
 

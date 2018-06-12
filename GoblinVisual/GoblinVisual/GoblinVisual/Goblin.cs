@@ -22,7 +22,7 @@
     {
         id = nextId++;
         this.emploi = emploi;
-        this.salaire = salaire;     //map
+        this.salaire = salaire; 
         stress = 0;
         greviste = false;
         this.collegue = collegue;
@@ -31,54 +31,44 @@
 
     public void handleRequest(Requete requete)
     {
-
         if (requete.getType().Name != "Salaire")
         {
-
             //Si il ne peut pas la traiter
-            if (occupe)
-            {
+            if (occupe){
                 stress += 5;
                 passerCollegue(requete);
-
-                //Si il peut la traiter, lancer un timer
-            }
-            else
-            {
-                timer = new Timer(requete.getTime(emploi));
-                timer.Elapsed += requeteTerminee(requete);  //Quand il n'est plus occupe
-                timer.start();
-                occupe = true;
+            //Si il peut la traiter 
+            }else{
+                //Si il doit la traiter
+                if (requete.shouldHandle(this))
+                {
+                    timer = new Timer(requete.getTime(emploi));
+                    timer.Elapsed += valider(requete);              //Quand il n'est plus occupe
+                    timer.start();
+                    occupe = true;
+                }
+                else
+                {
+                    passerSuperieur(requete);
+                }
             }
         }
         else
         {
             model.ajouterCoffre(-1 * salaire);
-            passerCollegue(requete);
-        }
-    }
-
-    /*
-    Appel a cette methode en fin de timer (goblin occupe).
-    On va alors chercher si la prochaine personne a qui
-    passer la requete, si nec.
-     */
-    public void requeteTerminee(Requete requete)
-    {
-
-        occupe = false;
-        int nextTask = requete.traiter(emploi);
-        if (nextTask != -1)
-        {
-            if (nextTask == (int)emploi)
-            {
+            //Si tous les salaires de ce type d'emplois ont été traité
+            if(collegue != model.getEmploye(0, 0)){
                 passerCollegue(requete);
-            }
-            else
-            {
+            }else{
                 passerSuperieur(requete);
             }
         }
+    }
+
+    public void valider(Requete requete)
+    {
+        occupe = false;
+        passerSuperieur(requete);
     }
 
     public void former()
