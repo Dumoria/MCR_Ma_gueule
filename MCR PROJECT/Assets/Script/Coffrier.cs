@@ -1,7 +1,7 @@
 ﻿namespace MODEL{
 	public class Coffrier : Goblin
 	{
-		public Coffrier(Emploi emploi, int salaire, Goblin collegue, Goblin superieur, Goblin employe) : base(emploi, salaire, collegue, superieur, employe)
+		public Coffrier(Model model, Emploi emploi, int salaire, Goblin collegue, Goblin superieur) : base(model, emploi, salaire, collegue, superieur)
 	{
 	 
 	}

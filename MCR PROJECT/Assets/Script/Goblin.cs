@@ -21,8 +21,9 @@ namespace MODEL{
 	    Timer timer;
 
 
-	    public Goblin(Emploi emploi, int salaire, Goblin collegue, Goblin superieur)
+	    public Goblin(Model model, Emploi emploi, int salaire, Goblin collegue, Goblin superieur)
 	    {
+			this.model = model;
 	        id = nextId++;
 	        this.emploi = emploi;
 	        this.salaire = salaire; 

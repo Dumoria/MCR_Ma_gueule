@@ -6,7 +6,7 @@ namespace MODEL{
 
 	    Model model;
 
-		public Tresorier(Emploi emploi, int salaire, Goblin collegue, Goblin superieur, Goblin employe) : base(emploi, salaire, collegue, superieur, employe)
+		public Tresorier(Model model, Emploi emploi, int salaire, Goblin collegue, Goblin superieur) : base(model, emploi, salaire, collegue, superieur)
 	    {
 	    }
 
