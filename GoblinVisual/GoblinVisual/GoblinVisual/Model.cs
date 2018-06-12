@@ -10,7 +10,6 @@ public class Model
     /**
      * nombre de classe hierarchique dans la banque
      */
-    private int argentPrets = 0;
     private int argentCoffre = 3000;
     private int nbRequetes = 0;
 
@@ -41,17 +40,31 @@ public class Model
         argentCoffre += nbGold;
     }
 
-    public void reduceStress(int prc)
+    public Goblin getEmploye(int indexEmploi, int indexEmploye)
+    {
+        return employes[indexEmploi][indexEmploye];
+    }
+
+    public void seFaireBraquer()
+    {
+        argentCoffre /= 2;
+        addStress(20);
+    }
+
+    public void addStress(int prc)
     {
         for(int i = 0; i < employes.Length; ++i)
         {
             List<Goblin> classe = employes[i];
             for (int j = 0; j < employes[i].Length; ++j)
             {
-                int stress = classe[j].getStress() - prc;
+                int stress = classe[j].getStress() + prc;
                 if(stress < 0)
                 {
                     classe[j].setStress(0);
+                }else if(stress > 100)
+                {
+                    classe[j].setStress(100);
                 }
                 else
                 {
@@ -61,19 +74,19 @@ public class Model
         }
     }
 
-    public void generateRequests()
+    public void generateSomeRequests()
     {
 
-        requetes.add(generateRequest());            //Mettre en place le random
+        requetes.add(generateARequest());  
         employes.get(0).get(0).handleRequest(requetes.get(0));
         requetes.RemoveAt(0);
 
-        requetesFlot = new Timer();
-        requetesFlot.Elapsed += generateRequest();
+        requetesFlot = new Timer(2000);
+        requetesFlot.Elapsed += generateSomeRequests();
         requetesFlot.start();
     }
 
-    public Request generateRequest()
+    public Request generateARequest()
     {
         int typeRequete = random.Next() % 9;
         Requete requete;
@@ -123,9 +136,18 @@ public class Model
         tmp.add(goblin);
     }
 
-    public void supprimerMaillon(Goblin goblin)
+    bool supprimerMaillon(Goblin goblin)
     {
-        employes.get((int)goblin.getEmploi()).remove(goblin);
+        List<Goblin> collegues = employes.get((int)goblin.getEmploi());
+        if (collegues.Length == 1)
+        {
+            Console.writeLine("Can't fire the last employe");
+            return false;
+        }
+        else {
+            employes.get((int)goblin.getEmploi()).remove(goblin);
+            return true;
+        }
     }
 
 }

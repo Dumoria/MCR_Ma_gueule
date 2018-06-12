@@ -9,5 +9,20 @@
     <Import_RootNamespace>GoblinVisual</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Bonus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cash.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CertificatFortune.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Chef.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Coffrier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Difficulte.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Goblin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Emploi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Receptionniste.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requete.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tamponeur.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tresorier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util.cs" />
   </ItemGroup>
 </Project>

@@ -22,78 +22,87 @@
     {
         id = nextId++;
         this.emploi = emploi;
-        this.salaire = salaire;     //map
+        this.salaire = salaire; 
         stress = 0;
         greviste = false;
         this.collegue = collegue;
         this.superieur = superieur;
     }
 
+    public void partirEnGreve()
+    {
+        timer = new Timer(30);
+        timer.Elapsed += arreterGreve();
+        timer.start();
+        model.supprimerMaillon(this);
+    }
+
+    public void arreterGreve()
+    {
+        stress = 0;
+        model.ajouterMaillon(this);
+    }
+
     public void handleRequest(Requete requete)
     {
-
         if (requete.getType().Name != "Salaire")
         {
-
             //Si il ne peut pas la traiter
-            if (occupe)
-            {
+            if (occupe){
                 stress += 5;
                 passerCollegue(requete);
+                if (stress == 100)
+                    partirEnGreve();
 
-                //Si il peut la traiter, lancer un timer
-            }
-            else
-            {
-                timer = new Timer(requete.getTime(emploi));
-                timer.Elapsed += requeteTerminee(requete);  //Quand il n'est plus occupe
-                timer.start();
-                occupe = true;
+            //Si il peut la traiter 
+            }else{
+                //Si il doit la traiter
+                if (requete.shouldHandle(this))
+                {
+                    timer = new Timer(3);
+                    timer.Elapsed += valider(requete);              //Quand il n'est plus occupe
+                    timer.start();
+                    occupe = true;
+                }
+                else
+                {
+                    passerSuperieur(requete);
+                }
             }
         }
         else
         {
             model.ajouterCoffre(-1 * salaire);
-            passerCollegue(requete);
-        }
-    }
-
-    /*
-    Appel a cette methode en fin de timer (goblin occupe).
-    On va alors chercher si la prochaine personne a qui
-    passer la requete, si nec.
-     */
-    public void requeteTerminee(Requete requete)
-    {
-
-        occupe = false;
-        int nextTask = requete.traiter(emploi);
-        if (nextTask != -1)
-        {
-            if (nextTask == (int)emploi)
-            {
+            //Si tous les salaires de ce type d'emplois ont été traité
+            if(collegue != model.getEmploye(0, 0)){
                 passerCollegue(requete);
-            }
-            else
-            {
+            }else{
                 passerSuperieur(requete);
             }
         }
+    }
+
+    public void valider(Requete requete)
+    {
+        occupe = false;
+        passerSuperieur(requete);
     }
 
     public void former()
     {
         if (emploi != Emploi.Chef)
         {
+            model.supprierMaillon(this);
             stress /= 2;
-            salaire *= 2;
+            salaire *= 1.5;
             emploi.next();
 
-            Goblin tmp = collegue;
             collegue = superieur;
             superieur = collegue.getSuperieur();
+            model.ajouterMaillon(this);
         }
     }
+
 
     public static int getNextId()
     {
