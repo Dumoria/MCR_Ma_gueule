@@ -45,17 +45,20 @@ public class Model
         return employes[indexEmploi][indexEmploye];
     }
 
-    public void reduceStress(int prc)
+    public void addStress(int prc)
     {
         for(int i = 0; i < employes.Length; ++i)
         {
             List<Goblin> classe = employes[i];
             for (int j = 0; j < employes[i].Length; ++j)
             {
-                int stress = classe[j].getStress() - prc;
+                int stress = classe[j].getStress() + prc;
                 if(stress < 0)
                 {
                     classe[j].setStress(0);
+                }else if(stress > 100)
+                {
+                    classe[j].setStress(100);
                 }
                 else
                 {
@@ -127,15 +130,17 @@ public class Model
         tmp.add(goblin);
     }
 
-    public void supprimerMaillon(Goblin goblin)
+    bool supprimerMaillon(Goblin goblin)
     {
         List<Goblin> collegues = employes.get((int)goblin.getEmploi());
         if (collegues.Length == 1)
         {
             Console.writeLine("Can't fire the last employe");
+            return false;
         }
         else {
             employes.get((int)goblin.getEmploi()).remove(goblin);
+            return true;
         }
     }
 

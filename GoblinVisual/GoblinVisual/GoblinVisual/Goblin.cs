@@ -29,6 +29,20 @@
         this.superieur = superieur;
     }
 
+    public void partirEnGreve()
+    {
+        timer = new Timer(30);
+        timer.Elapsed += arreterGreve();
+        timer.start();
+        model.supprimerMaillon(this);
+    }
+
+    public void arreterGreve()
+    {
+        stress = 0;
+        model.ajouterMaillon(this);
+    }
+
     public void handleRequest(Requete requete)
     {
         if (requete.getType().Name != "Salaire")
@@ -37,6 +51,9 @@
             if (occupe){
                 stress += 5;
                 passerCollegue(requete);
+                if (stress == 100)
+                    partirEnGreve();
+
             //Si il peut la traiter 
             }else{
                 //Si il doit la traiter
@@ -75,15 +92,17 @@
     {
         if (emploi != Emploi.Chef)
         {
+            model.supprierMaillon(this);
             stress /= 2;
-            salaire *= 2;
+            salaire *= 1.5;
             emploi.next();
 
-            Goblin tmp = collegue;
             collegue = superieur;
             superieur = collegue.getSuperieur();
+            model.ajouterMaillon(this);
         }
     }
+
 
     public static int getNextId()
     {
