@@ -38,13 +38,13 @@ namespace MODEL{
 	        timer = new Timer(30);
 	        timer.Elapsed += arreterGreve();
 	        timer.Start;
-	        model.supprimerMaillon(this);
+	        model.virer(this);
 	    }
 
 	    public void arreterGreve()
 	    {
 	        stress = 0;
-	        model.ajouterMaillon(this);
+	        model.engager(this);
 	    }
 
 	    public void handleRequest(Requete requete)
@@ -83,14 +83,14 @@ namespace MODEL{
 	    {
 	        if (emploi != Emploi.Chef)
 	        {
-	            model.supprimerMaillon(this);
+	            model.virer(this);
 	            stress /= 2;
 	            salaire *= 1.5;
 	            emploi++;
 
 	            collegue = superieur;
 	            superieur = collegue.getSuperieur();
-	            model.ajouterMaillon(this);
+	            model.engager(this);
 	        }
 	    }
 
@@ -150,7 +150,7 @@ namespace MODEL{
 	        return greviste;
 	    }
 
-	    public void setGreviste(Boolean greviste)
+	    public void setGreviste(bool greviste)
 	    {
 	        this.greviste = greviste;
 	    }

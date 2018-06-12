@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MODEL{
-{
-    class RequestGenerator
+    public class RequestGenerator
     {
+		
     }
 }

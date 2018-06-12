@@ -5,22 +5,13 @@
 	    Model model;
 	    Goblin currentGolbin;
 
-	    public boolean buyBonus(Bonus bonus)
+
+	    public bool buyBonus(Bonus bonus)
 	    {
 	        if (bonus.getCost() > model.getArgentCoffre())
 	            return false;
-	        model.ajouterArgentCoffre(bonus.getCost());
+	        model.ajouterCoffre(bonus.getCost());
 	        //prob traitement
-	    }
-
-	    public void engager()
-	    {
-	        model.ajouterMaillon(currentGolbin);
-	    }
-
-	    public void virer()
-	    {
-	        model.supprimerMaillon(currentGolbin);
 	    }
 
 	    public void selectionner(Goblin goblin)

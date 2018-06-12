@@ -24,6 +24,8 @@ namespace MODEL{
 	    private Difficulte difficulte;
 	    private Timer requetesFlot;
 
+		private Goblin currentGolbin;
+
 	    public Model()
 	    {
 	        employes.Add(new List<Receptionniste>());
@@ -147,7 +149,7 @@ namespace MODEL{
 
 	    }
 
-	    public void ajouterMaillon(Goblin goblin)
+	    public void engager(Goblin goblin)
 	    {
 	        List<Goblin> tmp = employes[(int)goblin.getEmploi()];
 	        tmp[tmp.Count - 1].setCollegue(goblin);
@@ -155,7 +157,7 @@ namespace MODEL{
 	        tmp.Add(goblin);
 	    }
 
-	    public bool supprimerMaillon(Goblin goblin)
+	    public bool virer(Goblin goblin)
 	    {
 	        List<Goblin> collegues = employes[(int)goblin.getEmploi()];
 			if (collegues.Count == 1)
@@ -169,5 +171,22 @@ namespace MODEL{
 	        }
 	    }
 
+		public bool buyBonus(Bonus bonus)
+		{
+			if (bonus.getCost() > argentCoffre)
+				return false;
+			ajouterCoffre(bonus.getCost());
+			//prob traitement
+		}
+
+		public void selectionner(Goblin goblin)
+		{
+			currentGolbin = goblin;
+		}
+
+		public void generateAlEvent()
+		{
+
+		}
 	}
 }
