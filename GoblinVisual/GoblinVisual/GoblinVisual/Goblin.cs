@@ -59,7 +59,7 @@
                 //Si il doit la traiter
                 if (requete.shouldHandle(this))
                 {
-                    timer = new Timer(requete.getTime(emploi));
+                    timer = new Timer(3);
                     timer.Elapsed += valider(requete);              //Quand il n'est plus occupe
                     timer.start();
                     occupe = true;

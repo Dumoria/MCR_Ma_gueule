@@ -45,6 +45,12 @@ public class Model
         return employes[indexEmploi][indexEmploye];
     }
 
+    public void seFaireBraquer()
+    {
+        argentCoffre /= 2;
+        addStress(20);
+    }
+
     public void addStress(int prc)
     {
         for(int i = 0; i < employes.Length; ++i)
@@ -68,19 +74,19 @@ public class Model
         }
     }
 
-    public void generateRequests()
+    public void generateSomeRequests()
     {
 
-        requetes.add(generateRequest());            //Mettre en place le random
+        requetes.add(generateARequest());  
         employes.get(0).get(0).handleRequest(requetes.get(0));
         requetes.RemoveAt(0);
 
         requetesFlot = new Timer(2000);
-        requetesFlot.Elapsed += generateRequests();
+        requetesFlot.Elapsed += generateSomeRequests();
         requetesFlot.start();
     }
 
-    public Request generateRequest()
+    public Request generateARequest()
     {
         int typeRequete = random.Next() % 9;
         Requete requete;
