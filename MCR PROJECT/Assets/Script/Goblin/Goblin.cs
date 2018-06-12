@@ -19,9 +19,10 @@ namespace MODEL{
 
 		protected Model model;
 		protected Timer timer;
+		protected Difficulte difficulte;
 
 
-	    public Goblin(Model model, Emploi emploi, double salaire, Goblin collegue, Goblin superieur)
+		public Goblin(Model model, Emploi emploi, double salaire, Goblin collegue, Goblin superieur, Difficulte difficulte)
 	    {
 			this.model = model;
 	        id = nextId++;
@@ -31,6 +32,7 @@ namespace MODEL{
 	        greviste = false;
 	        this.collegue = collegue;
 	        this.superieur = superieur;
+			this.difficulte = difficulte;
 	    }
 
 	    public void partirEnGreve()
@@ -51,7 +53,7 @@ namespace MODEL{
 	    {
 	        //Si il ne peut pas la traiter
 	        if (occupe){
-	            stress += 5;
+				stress += difficulte.getStressPrc();
 	            passerCollegue(requete);
 	            if (stress >= 100)
 	                partirEnGreve();

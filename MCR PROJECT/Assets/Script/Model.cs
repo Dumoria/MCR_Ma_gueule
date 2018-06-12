@@ -20,10 +20,8 @@ namespace MODEL{
 
 		private ArrayList employes = new ArrayList();
 	    private List<Requete> requetes = new List<Requete>();
-	    private Random random = new Random();
 
 	    private Difficulte difficulte;
-	    private Timer requetesFlot;
 		private Goblin currentGolbin;
 
 	    public Model()
@@ -34,11 +32,10 @@ namespace MODEL{
 	        employes.Add(new List<Tamponeur>());
 	        employes.Add(new List<Chef>());
 
-	        difficulte = new Difficulte(5, 40, 5); //Predecl pour diff facile
+	        difficulte = new Difficulte(5, 20, 5);
+			//request manager
+			//Goblin
 
-	        //requetesFlot = new Timer(difficulte.getDebitRequetes());
-	        //requetesFlot.Elapsed += generateSomeRequests(); 
-			//requetesFlot.Start;
 	    }
 
 	    public void ajouterCoffre(double nbGold)
@@ -46,16 +43,27 @@ namespace MODEL{
 	        argentCoffre += nbGold;
 	    }
 
-	    /*public Goblin getEmploye(int indexEmploi, int indexEmploye)
-	    {
-			return ((List<Goblin>) employes[indexEmploi])[indexEmploye];
-	    }*/
-
-	    public void seFaireBraquer()
+	    public void braquage()
 	    {
 	        argentCoffre /= 2;
-	        addStress(20);
+	        addStress(10);
 	    }
+
+		public void crashBoursier(){
+			argentCoffre /= 3;
+		}
+
+		public void greve(){
+			for (int i = 0; i < employes.Count; ++i)
+			{
+				List<Goblin> classe = (List<Goblin>) employes[i];
+				for (int j = 1; j < classe.Count; ++j)
+				{
+					if(j % 2 == 0)
+						classe[j].partirEnGreve();
+				}
+			}
+		}
 
 	    public double getSommeSalaires()
 	    {
@@ -92,62 +100,6 @@ namespace MODEL{
 	                }
 	            }
 	        }
-	    }
-
-	    public void generateSomeRequests()
-	    {
-
-	        requetes.Add(generateARequest());
-
-			((List<Goblin>) employes[0])[0].handleRequest(requetes[0]);
-	        requetes.RemoveAt(0);
-
-	        //requetesFlot = new Timer(2000);
-	        //requetesFlot.Elapsed += generateSomeRequests();
-			//requetesFlot.Start;
-	    }
-
-	    public Requete generateARequest()
-	    {
-	        int typeRequete = random.Next() % 9;
-			Requete requete;
-	        ++nbRequetes;
-
-	        switch (typeRequete)
-	        {
-	            case 0:
-	                //requete = new CertificatFortune();
-	                break;
-	            case 1:
-					//requete = new Retrait();
-	                break;
-	            case 2:
-				//requete = new Depot();
-	                break;
-	            case 3:
-				//requete = new Remboursement();
-	                break;
-	            case 4:
-				//requete = new Emprunt();
-	                break;
-	            case 5:
-	                requete = new PayementSalaire();
-	                break;
-	            case 6:
-	                requete = new MiroirDoubleSens();
-	                break;
-	            case 7:
-	                requete = new OuvrirCompte();
-	                break;
-	            case 8:
-	                requete = new TraiterBeuglantes();
-	                break;
-				default:
-					break;
-	                
-	        }
-			return requete;
-
 	    }
 
 	    public void engager(Goblin goblin)

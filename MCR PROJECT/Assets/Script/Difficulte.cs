@@ -14,6 +14,12 @@
 	        this.stressPrc = stressPrc;
 	    }
 
+		public void niveauSuperieur(){
+			debitRequetes += 2;
+			tauxBraquages += 2;
+			stressPrc += 2;
+		}
+
 	    public int getDebitRequetes()
 	    {
 	        return debitRequetes;
