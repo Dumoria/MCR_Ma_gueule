@@ -14,6 +14,7 @@ namespace MODEL{
 
 		private ArrayList employes = new ArrayList();
 	    private List<Requete> requetes = new List<Requete>();
+		private List<BonusModel> bonus = new List<BonusModel> ();
 
 	    private Difficulte difficulte;
 		private RequestsManager requestsManager;
@@ -28,13 +29,14 @@ namespace MODEL{
 	        employes.Add(new List<Tresorier>());
 	        employes.Add(new List<Tamponeur>());
 	        employes.Add(new List<Chef>());
-			populateLists ();
+			populateGoblins ();
+			populateBonus ();
 
 	        difficulte = new Difficulte(5, 50, 5);
 			requestsManager = new RequestsManager(this, requetes, currentGoblin, difficulte);
 	    }
 
-		public void populateLists(){
+		public void populateGoblins(){
 			currentGoblin = new Chef (this, Emploi.Chef, Salaire.getSalaire(0), null, null, difficulte);
 			currentGoblin.setCollegue (currentGoblin);
 			engager ();
@@ -55,6 +57,14 @@ namespace MODEL{
 			re.setCollegue (re);
 			engager (re);
 			currentGoblin = re;
+		}
+
+		public void populateBonus(){
+			bonus.Add (new Chinois (2000));
+			bonus.Add (new Garde (2000));
+			bonus.Add (new GobelineDePlaisance (2000));
+			bonus.Add (new PotDeVin (2000));
+			bonus.Add (new PoudreDePhenix (2000));
 		}
 
 		public double getArgentCoffre(){
