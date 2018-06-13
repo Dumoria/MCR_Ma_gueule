@@ -2,14 +2,16 @@
 */
 
 
-namespace MODEL{
-	public class Retrait : Cash {
 
-		public Retrait (int somme) : base(somme) {}
+public class Retrait extends Cash {
 
-		public override bool doitTraiter(Coffrier c) {
-			return true;
-		}
-
+	public Retrait (int somme)  {
+		 super(somme);
 	}
+
+	@Override
+	public bool doitTraiter(Coffrier c) {
+		return true;
+	}
+
 }

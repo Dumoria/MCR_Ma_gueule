@@ -3,14 +3,17 @@
 
 
 
-namespace MODEL{
-	public class Depot : Cash {
 
-		public Depot (int somme) : base(somme) {}
+public class Depot extends Cash {
 
-		public override bool doitTraiter(Coffrier c) {
-			return true;
-		}
-
+	public Depot (int somme) {
+		 super(somme);
 	}
+
+	@Override
+	public bool doitTraiter(Coffrier c) {
+		return true;
+	}
+
 }
+

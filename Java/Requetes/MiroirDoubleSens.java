@@ -2,13 +2,12 @@
 */
 
 
-namespace MODEL{
-	class MiroirDoubleSens : Requete {
 
+class MiroirDoubleSens extends Requete {
 
-		public override bool doitTraiter(Receptionniste r) {
-			return true;
-		}
-		
+	@Override
+	public bool doitTraiter(Receptionniste r) {
+		return true;
 	}
+	
 }
