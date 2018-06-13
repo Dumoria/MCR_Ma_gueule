@@ -60,11 +60,11 @@ namespace MODEL{
 		}
 
 		public void populateBonus(){
-			bonus.Add (new Chinois (2000));
-			bonus.Add (new Garde (2000));
-			bonus.Add (new GobelineDePlaisance (2000));
-			bonus.Add (new PotDeVin (2000));
-			bonus.Add (new PoudreDePhenix (2000));
+			bonus.Add (new Chinois (500));
+			bonus.Add (new Garde (500));
+			bonus.Add (new GobelineDePlaisance (500));
+			bonus.Add (new PotDeVin (500));
+			bonus.Add (new PoudreDePhenix (500));
 		}
 
 		public double getArgentCoffre(){
@@ -197,7 +197,7 @@ namespace MODEL{
 				return false;
 			ajouterCoffre(-1 * bonus.getCost());
 			bonus.incrementeNiveau();
-			addStress(20 * bonus.getNiveau());
+			addStress(-20 * bonus.getNiveau());
 			return true;
 		}
 
