@@ -32,7 +32,7 @@ namespace MODEL{
 
 	        difficulte = new Difficulte(5, 50, 5);
 			requestsManager = new RequestsManager(this, requetes, currentGoblin, difficulte);
-
+			start ();
 	    }
 
 		public void populateLists(){
@@ -68,6 +68,7 @@ namespace MODEL{
 
 		public void setLoose(){
 			loose = true;
+			update ();
 		}
 
 	    public void ajouterCoffre(double nbGold)
