@@ -6,7 +6,7 @@ namespace MODEL{
 	    private int cost;
 
 		public Bonus(){}
-		public setCost(int cost){
+		public void setCost(int cost){
 			this.cost=cost;
 		}
 	    public int getCost()
