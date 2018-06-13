@@ -12,7 +12,7 @@ namespace MODEL{
 		private List<Requete> requetes;
 		private Goblin firstRecep;
 
-		private Random random = new Random();
+		private System.Random random = new System.Random();
 		private Difficulte difficulte;
 		private Timer flotRequetes;
 
