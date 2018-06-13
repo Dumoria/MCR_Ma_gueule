@@ -199,7 +199,6 @@ namespace MODEL{
 			bonus.incrementeNiveau();
 			addStress(20 * bonus.getNiveau());
 			return true;
-
 		}
 
 		public void selectionner(Goblin goblin)
