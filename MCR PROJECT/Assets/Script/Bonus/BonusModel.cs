@@ -1,10 +1,12 @@
 ﻿
 namespace MODEL{
-	public class BonusModel
+
+	public abstract class BonusModel
 	{
 
 	    private int cost;
 		public static int niveau=0;
+
 
 		public BonusModel(int cost){
 			this.cost = cost;
