@@ -21,7 +21,6 @@ namespace MODEL{
 			this.requetes = requetes;
 			this.firstRecep = firstRecep;
 			this.difficulte = difficulte;
-			start ();
 		}
 
 		public void start(){
