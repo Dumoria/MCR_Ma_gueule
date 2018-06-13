@@ -5,11 +5,20 @@ namespace MODEL{
 		
 	public class Test{
 
+		Model model = new Model();
+		public void start(){
+
+		}
+
+		public void update(){
+			Debug.Log(model.getArgentCoffre());
+		}
+
 		static void Main(string[] args)
 		{
-			Model model = new Model ();
-			while(!model.getLoose()){
-				System.Console.WriteLine(model.getArgentCoffre());
+	
+			while(true){
+				
 			}
 		}
 	}
