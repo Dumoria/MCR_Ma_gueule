@@ -5,7 +5,7 @@ using UnityEngine;
 namespace MODEL{
 	public class Chinois : BonusModel {
 
-	public Chinois():base(){}
+		public Chinois(int cost):base(cost){}
 
 	}
 }

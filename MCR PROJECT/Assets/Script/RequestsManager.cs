@@ -6,6 +6,7 @@ using System.Timers;
 namespace MODEL{
     public class RequestsManager
     {
+		private Model model;
 		private int nbTotRequetes = 0;
 		private List<Requete> requetes;
 		private Goblin firstRecep;
@@ -14,14 +15,15 @@ namespace MODEL{
 		private Difficulte difficulte;
 		private Timer flotRequetes;
 
-		public RequestsManager(List<Requete> requetes, Goblin firstRecep, Difficulte difficulte){
+		public RequestsManager(Model model, List<Requete> requetes, Goblin firstRecep, Difficulte difficulte){
+			this.model = model;
 			this.requetes = requetes;
 			this.firstRecep = firstRecep;
 			this.difficulte = difficulte;
 		}
 
 		public int generateRandomAmount(){
-			return random.Next () % 2500;
+			return random.Next () % 2000;
 		}
 
 		public void generateAlEvent()
@@ -30,13 +32,13 @@ namespace MODEL{
 			switch (typeEv)
 			{
 			case 0:
-				Model.braquage();
+				model.braquage();
 				break;
 			case 1:
-				Model.crashBoursier();
+				model.crashBoursier();
 				break;
 			case 2:
-				Model.greve ();
+				model.greve ();
 				break;
 			default:
 				break;
@@ -51,13 +53,13 @@ namespace MODEL{
 			firstRecep.handleRequest(requetes[0]);
 			requetes.RemoveAt(0);
 
-			if(nbTotRequetes % difficulte.getNbRequetePourEvAl == 0)
+			if(nbTotRequetes % difficulte.getNbRequetePourEvAl() == 0)
 				generateAlEvent ();
 			if (nbTotRequetes % 75 == 0) 
 				difficulte.niveauSuperieur ();
 			
 
-			if (!Model.getLoose()) {
+			if (!model.getLoose()) {
 				flotRequetes = new Timer (difficulte.getDebitRequetes ());
 				flotRequetes.Elapsed += (sender, EventArgs) => start ();
 				flotRequetes.Start ();

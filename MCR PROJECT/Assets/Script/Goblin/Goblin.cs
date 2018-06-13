@@ -11,7 +11,6 @@ namespace MODEL{
 		protected double salaire;
 
 		protected int stress;
-		protected bool greviste;
 		protected bool occupe;
 
 		protected Goblin collegue;
@@ -25,11 +24,10 @@ namespace MODEL{
 		public Goblin(Model model, Emploi emploi, double salaire, Goblin collegue, Goblin superieur, Difficulte difficulte)
 	    {
 			this.model = model;
-	        id = nextId++;
+	        this.id = nextId++;
 	        this.emploi = emploi;
 	        this.salaire = salaire; 
-	        stress = 0;
-	        greviste = false;
+	        this.stress = 0;
 	        this.collegue = collegue;
 	        this.superieur = superieur;
 			this.difficulte = difficulte;
@@ -68,7 +66,7 @@ namespace MODEL{
 				if (requete.doitTraiter(this))
 	            {
 	                occupe = true;
-	                timer = new Timer(3);
+	                timer = new Timer(3000);
 					timer.Elapsed += (sender, EventArgs) => valider(requete);  //Quand il n'est plus occupe, appeler valider
 					timer.Start();
 	            }
@@ -91,9 +89,7 @@ namespace MODEL{
 	        {
 	            model.virer(this);
 	            stress /= 2;
-	            salaire *= 1.5;
-	            emploi++;
-
+				salaire = (Salaire.getSalaire((int) ++emploi));
 	            collegue = superieur;
 	            superieur = collegue.getSuperieur();
 	            model.engager(this);
@@ -149,16 +145,6 @@ namespace MODEL{
 	    public void setStress(int stress)
 	    {
 	        this.stress = stress;
-	    }
-
-	    public bool getGreviste()
-	    {
-	        return greviste;
-	    }
-
-	    public void setGreviste(bool greviste)
-	    {
-	        this.greviste = greviste;
 	    }
 
 	    public Goblin getCollegue()

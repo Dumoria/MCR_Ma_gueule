@@ -18,8 +18,8 @@ namespace MODEL{
 			salaires.Add (100);
 			salaires.Add (150);
 			salaires.Add (225);
-			salaires.Add (337.5);
-			salaires.Add (506.25);
+			salaires.Add (300);
+			salaires.Add (500);
 		}
 
 		public static double getSalaire(int index){

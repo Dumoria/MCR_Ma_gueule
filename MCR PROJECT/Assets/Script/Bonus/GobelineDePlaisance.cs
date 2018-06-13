@@ -6,6 +6,6 @@ namespace MODEL{
 	public class GobelineDePlaisance : BonusModel {
 
 
-		public GobelineDePlaisance():base(){}
+		public GobelineDePlaisance(int cost):base(cost){}
 	}
 }

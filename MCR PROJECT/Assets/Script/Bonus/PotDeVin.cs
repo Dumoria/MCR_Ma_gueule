@@ -5,6 +5,6 @@ using UnityEngine;
 namespace MODEL{
 	public class PotDeVin : BonusModel {
         
-		public PotDeVin():base(){}
+		public PotDeVin(int cost):base(cost){}
 	}
 }

@@ -34,7 +34,7 @@ namespace MODEL{
 			populateLists ();
 
 	        difficulte = new Difficulte(5, 50, 5);
-			requestsManager = new RequestsManager(requetes, currentGoblin, difficulte);
+			requestsManager = new RequestsManager(this, requetes, currentGoblin, difficulte);
 
 	    }
 
@@ -94,7 +94,7 @@ namespace MODEL{
 				List<Goblin> classe = (List<Goblin>) employes[i];
 				for (int j = 1; j < classe.Count; ++j)
 				{
-					if(j % 2 == 0)
+					if(j % 3 == 0)					//Un goblin sur trois par en greve en moyenne
 						classe[j].partirEnGreve();
 				}
 			}
@@ -131,7 +131,7 @@ namespace MODEL{
 	                }
 	                else
 	                {
-	                    classe[j].setStress(classe[j].getStress() - prc);
+	                    classe[j].setStress(stress);
 	                }
 	            }
 	        }
@@ -141,6 +141,8 @@ namespace MODEL{
 	    {
 			List<Goblin> tmp = (List<Goblin>) employes[(int) currentGoblin.getEmploi()];
 			tmp[tmp.Count - 1].setCollegue(currentGoblin);
+
+            //prob, devrait creer nouveau goblin
 			currentGoblin.setCollegue (tmp[0]);
 			currentGoblin.setSuperieur(tmp[0].getSuperieur());
 			tmp.Add(currentGoblin);
@@ -187,7 +189,7 @@ namespace MODEL{
 		{
 			if (bonus.getCost() > argentCoffre)
 				return false;
-			ajouterCoffre(bonus.getCost());
+			ajouterCoffre(-1 * bonus.getCost());
 			bonus.incrementeNiveau();
 			addStress(20 * bonus.getNiveau());
 			return true;
