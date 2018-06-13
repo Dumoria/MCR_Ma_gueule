@@ -26,6 +26,21 @@ namespace MODEL{
 
 		public void generateAlEvent()
 		{
+			int typeEv = random.Next() % 6;	//Une chance sur deux d'avoir un evenement aleatoire
+			switch (typeEv)
+			{
+			case 0:
+				Model.braquage();
+				break;
+			case 1:
+				Model.crashBoursier();
+				break;
+			case 2:
+				Model.greve ();
+				break;
+			default:
+				break;
+			}
 
 		}
 			
@@ -36,8 +51,11 @@ namespace MODEL{
 			firstRecep.handleRequest(requetes[0]);
 			requetes.RemoveAt(0);
 
-			if (nbTotRequetes % 50 == 0)
-				difficulte.niveauSuperieur();
+			if(nbTotRequetes % difficulte.getNbRequetePourEvAl == 0)
+				generateAlEvent ();
+			if (nbTotRequetes % 75 == 0) 
+				difficulte.niveauSuperieur ();
+			
 
 			if (!Model.getLoose()) {
 				flotRequetes = new Timer (difficulte.getDebitRequetes ());

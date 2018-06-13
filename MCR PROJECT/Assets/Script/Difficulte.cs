@@ -4,20 +4,24 @@
 	{
 
 	    int debitRequetes;
-	    int tauxBraquages;
+	    int nbRequetePourEvAl;
 	    int stressPrc;
 
-	    public Difficulte(int debitRequetes, int tauxBraquages, int stressPrc)
+		public Difficulte(int debitRequetes, int nbRequetePourEvAl, int stressPrc)
 	    {
 	        this.debitRequetes = debitRequetes;
-	        this.tauxBraquages = tauxBraquages;
+			this.nbRequetePourEvAl = nbRequetePourEvAl;
 	        this.stressPrc = stressPrc;
 	    }
 
 		public void niveauSuperieur(){
 			debitRequetes += 2;
-			tauxBraquages += 2;
-			stressPrc += 2;
+
+			if(nbRequetePourEvAl >= 5)
+				nbRequetePourEvAl -= 5;
+
+			if(100 - stressPrc >= 2)
+				stressPrc += 2;
 		}
 
 	    public int getDebitRequetes()
@@ -30,14 +34,14 @@
 	        this.debitRequetes = debitRequetes;
 	    }
 
-	    public int getTauxBraquages()
+		public int getNbRequetePourEvAl()
 	    {
-	        return tauxBraquages;
+			return nbRequetePourEvAl;
 	    }
 
-	    public void setTauxBraquages(int tauxBraquages)
+		public void setNbRequetePourEvAl(int nbRequetePourEvAl)
 	    {
-	        this.tauxBraquages = tauxBraquages;
+			this.nbRequetePourEvAl = nbRequetePourEvAl;
 	    }
 
 	    public int getStressPrc()

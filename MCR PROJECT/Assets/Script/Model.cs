@@ -12,7 +12,7 @@ namespace MODEL{
 	public class Model
 	{
 		private bool loose = false;
-	    private double argentCoffre = 3000;
+	    private double argentCoffre = 15000;
 	    private int nbRequetes = 0;
 
 		private ArrayList employes = new ArrayList();
@@ -33,7 +33,7 @@ namespace MODEL{
 	        employes.Add(new List<Chef>());
 			populateLists ();
 
-	        difficulte = new Difficulte(5, 20, 5);
+	        difficulte = new Difficulte(5, 50, 5);
 			requestsManager = new RequestsManager(requetes, currentGoblin, difficulte);
 
 	    }
@@ -183,13 +183,15 @@ namespace MODEL{
 			}
 		}
 
-		public bool buyBonus(Bonus bonus)
+		public bool buyBonus(BonusModel bonus)
 		{
 			if (bonus.getCost() > argentCoffre)
 				return false;
 			ajouterCoffre(bonus.getCost());
+			bonus.incrementeNiveau();
+			addStress(20 * bonus.getNiveau());
 			return true;
-			//prob traitement
+
 		}
 
 		public void selectionner(Goblin goblin)
