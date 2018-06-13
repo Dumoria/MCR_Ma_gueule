@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Timers;
 using System.Collections;
+using UnityEngine;
 
 namespace MODEL{
 	public class Model
@@ -31,7 +32,6 @@ namespace MODEL{
 
 	        difficulte = new Difficulte(5, 50, 5);
 			requestsManager = new RequestsManager(this, requetes, currentGoblin, difficulte);
-			requestsManager.start ();
 
 	    }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Timers;
+using UnityEngine;
 
 namespace MODEL{
     public class RequestsManager
@@ -20,6 +21,11 @@ namespace MODEL{
 			this.requetes = requetes;
 			this.firstRecep = firstRecep;
 			this.difficulte = difficulte;
+			start ();
+		}
+
+		public void start(){
+			this.update ();
 		}
 
 		public int generateRandomAmount(){
@@ -46,7 +52,7 @@ namespace MODEL{
 
 		}
 			
-		public void start()
+		public void update()
 		{
 
 			requetes.Add(generateARequest());
