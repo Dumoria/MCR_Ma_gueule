@@ -63,7 +63,6 @@ namespace MODEL{
 			if (nbTotRequetes % 75 == 0) 
 				difficulte.niveauSuperieur ();
 			
-
 			if (!model.getLoose()) {
 				flotRequetes = new Timer (difficulte.getDebitRequetes ());
 				flotRequetes.Elapsed += (sender, EventArgs) => start ();
