@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GobelineDePlaisance : BonusModel {
+namespace MODEL{
+	public class GobelineDePlaisance : BonusModel {
 
-public GobelineDePlaisance:base(){}
+		public GobelineDePlaisance():base(){}
+	}
 }

@@ -1,12 +1,12 @@
 ﻿
 namespace MODEL{
-	public class Bonus
+	public class BonusModel
 	{
 
 	    private int cost;
 
-		public Bonus(){}
-		public setCost(int cost){
+		public BonusModel(){}
+		public void setCost(int cost){
 			this.cost=cost;
 		}
 	    public int getCost()

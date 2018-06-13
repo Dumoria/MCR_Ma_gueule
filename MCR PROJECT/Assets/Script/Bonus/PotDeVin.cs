@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PotDeVin : BonusModel {
+namespace MODEL{
+	public class PotDeVin : BonusModel {
 
-public PotDeVin:base(){}
+		public PotDeVin():base(){}
+	}
 }
