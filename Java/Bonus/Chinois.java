@@ -1,12 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
+	public class Chinois implements BonusModel {
 
-namespace MODEL{
-	public class Chinois : BonusModel {
-
-		public Chinois(int cost):base(cost){}
+		public Chinois(int cost){super(cost)}
 
 	}
-}
 

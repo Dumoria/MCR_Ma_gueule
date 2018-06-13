@@ -1,11 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace MODEL{
-	public class GobelineDePlaisance : BonusModel {
+﻿
+public class GobelineDePlaisance implements BonusModel {
 
 
-		public GobelineDePlaisance(int cost):base(cost){}
-	}
+	public GobelineDePlaisance(int cost){super(cost)}
 }

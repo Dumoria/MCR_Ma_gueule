@@ -1,12 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
+public class PoudreDePhenix implements BonusModel {
 
+    public PoudreDePhenix(int cost){super(cost) }
 
-namespace MODEL {
-    public class PoudreDePhenix : BonusModel {
-      
-		public PoudreDePhenix(int cost):base(cost){ }
-        
-    }
 }

@@ -1,7 +1,5 @@
 ﻿
-namespace MODEL{
-	public class Tamponeur : Goblin
+	public class Tamponeur implements Goblin
 	{
-		public Tamponeur(Model model, Emploi emploi, double salaire, Goblin collegue, Goblin superieur, Difficulte difficulte) : base(model, emploi, salaire, collegue, superieur, difficulte){}
+		public Tamponeur(Model model, Emploi emploi, double salaire, Goblin collegue, Goblin superieur, Difficulte difficulte) { super(model, emploi, salaire, collegue, superieur, difficulte)}
 	}
-}

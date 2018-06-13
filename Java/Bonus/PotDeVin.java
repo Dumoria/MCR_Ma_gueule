@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
+public class PotDeVin implements BonusModel {
 
-namespace MODEL{
-	public class PotDeVin : BonusModel {
-        
-		public PotDeVin(int cost):base(cost){}
-	}
+	public PotDeVin(int cost){super(cost)}
 }

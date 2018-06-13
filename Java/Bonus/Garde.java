@@ -5,6 +5,6 @@ using UnityEngine;
 namespace MODEL{
 	public class Garde : BonusModel {
 
-		public Garde(int cost):base(cost){}
+		public Garde(int cost){super(cost)}
 }
 }

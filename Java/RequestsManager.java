@@ -1,41 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Timers;
-using UnityEngine;
+﻿import java.util.Random;
+import java.util.Timer;
 
-namespace MODEL{
-    public class RequestsManager
-    {
-		private Model model;
-		private int nbTotRequetes = 0;
-		private List<Requete> requetes;
-		private Goblin firstRecep;
+public class RequestsManager
+{
+	private Model model;
+	private int nbTotRequetes = 0;
+	private List<Requete> requetes;
+	private Goblin firstRecep;
 
-		private System.Random random = new System.Random();
-		private Difficulte difficulte;
-		private Timer flotRequetes;
+	private Random random = new Random();
+	private Difficulte difficulte;
+	private Timer flotRequetes;
 
-		public RequestsManager(Model model, List<Requete> requetes, Goblin firstRecep, Difficulte difficulte){
-			this.model = model;
-			this.requetes = requetes;
-			this.firstRecep = firstRecep;
-			this.difficulte = difficulte;
-		}
+	public RequestsManager(Model model, List<Requete> requetes, Goblin firstRecep, Difficulte difficulte){
+		this.model = model;
+		this.requetes = requetes;
+		this.firstRecep = firstRecep;
+		this.difficulte = difficulte;
+	}
 
-		public void start(){
-			this.update ();
-		}
+	public int generateRandomAmount(){
+		return random.nextInt(2000);
+	}
 
-		public int generateRandomAmount(){
-			return random.Next () % 2000;
-		}
-
-		public void generateAlEvent()
+	public void generateAlEvent()
+	{
+		int typeEv = random.nextInt(6);	//Une chance sur deux d'avoir un evenement aleatoire
+		switch (typeEv)
 		{
-			int typeEv = random.Next() % 6;	//Une chance sur deux d'avoir un evenement aleatoire
-			switch (typeEv)
-			{
 			case 0:
 				model.braquage();
 				break;
@@ -47,70 +39,71 @@ namespace MODEL{
 				break;
 			default:
 				break;
-			}
-
 		}
-			
-		public void update()
-		{
 
+	}
+
+	public void start()
+	{
+		while(!model.getLoose()){
 			requetes.Add(generateARequest());
 			firstRecep.handleRequest(requetes[0]);
 			requetes.RemoveAt(0);
 
 			if(nbTotRequetes % difficulte.getNbRequetePourEvAl() == 0)
 				generateAlEvent ();
-			if (nbTotRequetes % 75 == 0) 
+			if (nbTotRequetes % 75 == 0)
 				difficulte.niveauSuperieur ();
-			
-			if (!model.getLoose()) {
-				flotRequetes = new Timer (difficulte.getDebitRequetes ());
-				flotRequetes.Elapsed += (sender, EventArgs) => start ();
-				flotRequetes.Start ();
+			try {
+				wait(difficulte.getDebitRequetes());
 			}
-
+			catch (Exception e ){
+				//oups
+			}
 		}
 
-		public Requete generateARequest()
-		{
-			int typeRequete = random.Next() % 9;
-			Requete requete;
-			++nbTotRequetes;
+	}
 
-			switch (typeRequete)
-			{
+	public Requete generateARequest()
+	{
+		int typeRequete = random.nextInt(9);
+		Requete requete;
+		++nbTotRequetes;
+
+		switch (typeRequete)
+		{
 			case 0:
 				return new CertificatFortune(generateRandomAmount());
-				break;
+			break;
 			case 1:
 				return new Retrait(generateRandomAmount());
-				break;
+			break;
 			case 2:
 				return new Depot(generateRandomAmount());
-				break;
+			break;
 			case 3:
 				return new Remboursement(generateRandomAmount());
-				break;
+			break;
 			case 4:
 				return new Emprunt(generateRandomAmount());
-				break;
+			break;
 			case 5:
 				return new PayementSalaire();
-				break;
+			break;
 			case 6:
 				return new MiroirDoubleSens();
-				break;
+			break;
 			case 7:
 				return new OuvrirCompte();
-				break;
+			break;
 			case 8:
 				return new TraiterBeuglantes();
-				break;
+			break;
 			default:
 				return null;
 
-			}
-
 		}
-    }
+
+	}
 }
+
