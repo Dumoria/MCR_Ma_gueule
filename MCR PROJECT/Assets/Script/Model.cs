@@ -11,10 +11,6 @@ using System.Collections;
 namespace MODEL{
 	public class Model
 	{
-
-	    /**
-	     * nombre de classe hierarchique dans la banque
-	     */
 	    private double argentCoffre = 3000;
 	    private int nbRequetes = 0;
 
@@ -22,21 +18,49 @@ namespace MODEL{
 	    private List<Requete> requetes = new List<Requete>();
 
 	    private Difficulte difficulte;
-		private Goblin currentGolbin;
+		private RequestsManager requestsManager;
+
+		private Goblin currentGoblin;
+
 
 	    public Model()
 	    {
+			List<Receptionniste> r = new List<Receptionniste> ();
+			r.Add (new Receptionniste ());
+
 	        employes.Add(new List<Receptionniste>());
 	        employes.Add(new List<Coffrier>());
 	        employes.Add(new List<Tresorier>());
 	        employes.Add(new List<Tamponeur>());
 	        employes.Add(new List<Chef>());
+			populateLists ();
 
 	        difficulte = new Difficulte(5, 20, 5);
-			//request manager
-			//Goblin
+			requestsManager = new RequestsManager();
 
 	    }
+
+		public void populateLists(){
+			currentGoblin = new Chef (this, Emploi.Chef, Salaire.Chef, null, null, difficulte);
+			currentGoblin.setCollegue (currentGoblin);
+			engager ();
+
+			Tamponeur ta = new Tamponeur (this, Emploi.Tamponeur, Salaire.Tamponeur, null, currentGoblin, difficulte);
+			ta.setCollegue (ta);
+			engager (ta);
+
+			Tresorier tr = new Tresorier (this, Emploi.Tresorier, Salaire.Tresorier, null, ta, difficulte);
+			tr.setCollegue (tr);
+			engager(tr);
+
+			Coffrier co = new Coffrier(this, Emploi.Coffrier, Salaire.Coffrier, null, tr, difficulte);
+			co.setCollegue (co);
+			engager (co);
+
+			Receptionniste re = new Receptionniste(this, Emploi.Receptionniste, Salaire.Receptionniste, null, co, difficulte);
+			re.setCollegue (re);
+			engager (re);
+		}
 
 	    public void ajouterCoffre(double nbGold)
 	    {
@@ -102,24 +126,34 @@ namespace MODEL{
 	        }
 	    }
 
-	    public void engager(Goblin goblin)
+	    public void engager()
 	    {
-			List<Goblin> tmp = (List<Goblin>) employes[(int)goblin.getEmploi()];
-	        tmp[tmp.Count - 1].setCollegue(goblin);
-	        goblin.setSuperieur(tmp[0].getSuperieur());
-	        tmp.Add(goblin);
+			List<Goblin> tmp = (List<Goblin>) employes[(int) currentGoblin.getEmploi()];
+			tmp[tmp.Count - 1].setCollegue(currentGoblin);
+			currentGoblin.setCollegue (tmp[0]);
+			currentGoblin.setSuperieur(tmp[0].getSuperieur());
+			tmp.Add(currentGoblin);
 	    }
 
-	    public bool virer(Goblin goblin)
+		public void engager(Goblin goblin)
+		{
+			List<Goblin> tmp = (List<Goblin>) employes[(int) goblin.getEmploi()];
+			tmp[tmp.Count - 1].setCollegue(goblin);
+			goblin.setCollegue (tmp[0]);
+			goblin.setSuperieur(tmp[0].getSuperieur());
+			tmp.Add(goblin);
+		}
+
+	    public bool virer()
 	    {
-			List<Goblin> collegues = (List<Goblin>) employes[(int)goblin.getEmploi()];
+			List<Goblin> collegues = (List<Goblin>) employes[(int)currentGoblin.getEmploi()];
 			if (collegues.Count == 1)
 	        {
 				Console.WriteLine("Can't fire the last employe");
 	            return false;
 	        }
 	        else {
-				((List<Goblin>) employes[(int)goblin.getEmploi()]).Remove(goblin);
+				((List<Goblin>) employes[(int)currentGoblin.getEmploi()]).Remove(currentGoblin);
 	            return true;
 	        }
 	    }
@@ -135,7 +169,7 @@ namespace MODEL{
 
 		public void selectionner(Goblin goblin)
 		{
-			currentGolbin = goblin;
+			currentGoblin = goblin;
 		}
 
 		public void generateAlEvent()

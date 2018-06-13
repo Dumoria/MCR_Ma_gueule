@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Timers;
 
 namespace MODEL{
     public class RequestsManager
@@ -11,6 +12,7 @@ namespace MODEL{
 
 		private Random random = new Random();
 		private Difficulte difficulte;
+		private Timer flotRequetes;
 
 		public RequestsManager(List<Requete> requetes, Goblin firstRecep, Difficulte difficulte){
 			this.requetes = requetes;
@@ -28,9 +30,10 @@ namespace MODEL{
 			if (nbTotRequetes % 50 == 0)
 				difficulte.niveauSuperieur();
 
-			//requetesFlot = new Timer(2000);
-			//requetesFlot.Elapsed += generateSomeRequests();
-			//requetesFlot.Start;
+			flotRequetes = new Timer(difficulte.getDebitRequetes());
+			flotRequetes.Elapsed += (sender, EventArgs) => start();
+			flotRequetes.Start;
+
 		}
 
 		public Requete generateARequest()

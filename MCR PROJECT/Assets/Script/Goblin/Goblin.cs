@@ -37,9 +37,9 @@ namespace MODEL{
 
 	    public void partirEnGreve()
 	    {
-	        //timer = new Timer(30);
-	        //timer.Elapsed += arreterGreve();
-	        //timer.Start;
+	        timer = new Timer(30);
+			timer.Elapsed += (sender, EventArgs) => arreterGreve();
+	        timer.Start;
 	        model.virer(this);
 	    }
 
@@ -64,9 +64,9 @@ namespace MODEL{
 				if (requete.doitTraiter(this))
 	            {
 	                occupe = true;
-	                //timer = new Timer(3);
-	                //timer.Elapsed += valider(requete);              //Quand il n'est plus occupe
-					//timer.Start;
+	                timer = new Timer(3);
+					timer.Elapsed += (sender, EventArgs) => valider(requete);  //Quand il n'est plus occupe, appeler valider
+					timer.Start;
 	            }
 	            else
 	            {
