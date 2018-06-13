@@ -55,9 +55,13 @@ namespace MODEL{
 	        if (occupe){
 				stress += difficulte.getStressPrc();
 	            passerCollegue(requete);
-	            if (stress >= 100)
-	                partirEnGreve();
-
+				if (stress >= 100) {
+					if (collegue == this) {
+						model.setLoose();
+					} else {
+						partirEnGreve ();
+					}
+				}
 	        //Si il peut la traiter 
 	        }else{
 	            //Si il doit la traiter
