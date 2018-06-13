@@ -2,7 +2,7 @@
 	public class Chef : Goblin
 	{
 
-		public Chef(Model model, Emploi emploi, int salaire, Goblin collegue, Goblin superieur) : base(model, emploi, salaire, collegue, superieur)
+		public Chef(Model model, Emploi emploi, double salaire, Goblin collegue, Goblin superieur, Difficulte difficulte) : base(model, emploi, salaire, collegue, superieur, difficulte)
 	    {
 	       
 	    }

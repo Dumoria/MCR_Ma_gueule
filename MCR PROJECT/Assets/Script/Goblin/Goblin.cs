@@ -39,7 +39,7 @@ namespace MODEL{
 	    {
 	        timer = new Timer(30);
 			timer.Elapsed += (sender, EventArgs) => arreterGreve();
-	        timer.Start;
+			timer.Start();
 	        model.virer(this);
 	    }
 
@@ -66,7 +66,7 @@ namespace MODEL{
 	                occupe = true;
 	                timer = new Timer(3);
 					timer.Elapsed += (sender, EventArgs) => valider(requete);  //Quand il n'est plus occupe, appeler valider
-					timer.Start;
+					timer.Start();
 	            }
 	            else
 	            {

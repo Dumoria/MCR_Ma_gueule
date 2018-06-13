@@ -25,9 +25,6 @@ namespace MODEL{
 
 	    public Model()
 	    {
-			List<Receptionniste> r = new List<Receptionniste> ();
-			r.Add (new Receptionniste ());
-
 	        employes.Add(new List<Receptionniste>());
 	        employes.Add(new List<Coffrier>());
 	        employes.Add(new List<Tresorier>());
@@ -36,30 +33,31 @@ namespace MODEL{
 			populateLists ();
 
 	        difficulte = new Difficulte(5, 20, 5);
-			requestsManager = new RequestsManager();
+			requestsManager = new RequestsManager(requetes, currentGoblin, difficulte);
 
 	    }
 
 		public void populateLists(){
-			currentGoblin = new Chef (this, Emploi.Chef, Salaire.Chef, null, null, difficulte);
+			currentGoblin = new Chef (this, Emploi.Chef, Salaire.getSalaire(0), null, null, difficulte);
 			currentGoblin.setCollegue (currentGoblin);
 			engager ();
 
-			Tamponeur ta = new Tamponeur (this, Emploi.Tamponeur, Salaire.Tamponeur, null, currentGoblin, difficulte);
+			Tamponeur ta = new Tamponeur (this, Emploi.Tamponeur,  Salaire.getSalaire(1), null, currentGoblin, difficulte);
 			ta.setCollegue (ta);
 			engager (ta);
 
-			Tresorier tr = new Tresorier (this, Emploi.Tresorier, Salaire.Tresorier, null, ta, difficulte);
+			Tresorier tr = new Tresorier (this, Emploi.Tresorier,  Salaire.getSalaire(2), null, ta, difficulte);
 			tr.setCollegue (tr);
 			engager(tr);
 
-			Coffrier co = new Coffrier(this, Emploi.Coffrier, Salaire.Coffrier, null, tr, difficulte);
+			Coffrier co = new Coffrier(this, Emploi.Coffrier,  Salaire.getSalaire(3), null, tr, difficulte);
 			co.setCollegue (co);
 			engager (co);
 
-			Receptionniste re = new Receptionniste(this, Emploi.Receptionniste, Salaire.Receptionniste, null, co, difficulte);
+			Receptionniste re = new Receptionniste(this, Emploi.Receptionniste,  Salaire.getSalaire(4), null, co, difficulte);
 			re.setCollegue (re);
 			engager (re);
+			currentGoblin = re;
 		}
 
 	    public void ajouterCoffre(double nbGold)
@@ -157,6 +155,20 @@ namespace MODEL{
 	            return true;
 	        }
 	    }
+
+		public bool virer(Goblin goblin)
+		{
+			List<Goblin> collegues = (List<Goblin>) employes[(int)goblin.getEmploi()];
+			if (collegues.Count == 1)
+			{
+				Console.WriteLine("Can't fire the last employe");
+				return false;
+			}
+			else {
+				((List<Goblin>) employes[(int)goblin.getEmploi()]).Remove(goblin);
+				return true;
+			}
+		}
 
 		public bool buyBonus(Bonus bonus)
 		{
