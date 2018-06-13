@@ -3,20 +3,21 @@
 
 
 
-namespace MODEL{
-	public class PayementSalaire : Requete {
 
-		
-		public override bool doitTraiter(Tresorier t) {
-			return true;
-		}
+public class PayementSalaire extends Requete {
 
-		public override bool doitTraiter(Tamponeur t) {
-			return true;
-		}
-		
-		public override bool doitTraiter(Chef c) {
-			return true;
-		}
+	@Override
+	public bool doitTraiter(Tresorier t) {
+		return true;
+	}
+
+	@Override
+	public bool doitTraiter(Tamponeur t) {
+		return true;
+	}
+
+	@Override
+	public bool doitTraiter(Chef c) {
+		return true;
 	}
 }

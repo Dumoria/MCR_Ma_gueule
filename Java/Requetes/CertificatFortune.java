@@ -2,19 +2,22 @@
 */
 
 
-namespace MODEL{
+
 	
-	class CertificatFortune : Cash {
+class CertificatFortune extends Cash {
 
-		public CertificatFortune (int somme) : base(somme) {}
-
-		public override bool doitTraiter(Receptionniste r) {
-			return true;
-		}
-
-		public override bool doitTraiter(Tamponeur t) {
-			return true;
-		}
+	public CertificatFortune (int somme) {
+		super(somme);
 	}
 
+	@Override
+	public bool doitTraiter(Receptionniste r) {
+		return true;
+	}
+
+	@Override
+	public bool doitTraiter(Tamponeur t) {
+		return true;
+	}
 }
+

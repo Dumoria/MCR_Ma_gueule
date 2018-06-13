@@ -1,11 +1,11 @@
 /** @author Max
 */
 
-namespace MODEL{
-	public class Emprunt : Cash {
+public class Emprunt extends Cash {
 
-		public Emprunt (int somme) : base(somme) {}
-
-
+	public Emprunt (int somme) {
+		 super(somme);
 	}
+
+
 }

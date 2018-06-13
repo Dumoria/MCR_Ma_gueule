@@ -2,10 +2,12 @@
 */
 
 
-namespace MODEL{
-	public class Remboursement : Cash {
 
-		public Remboursement (int somme) : base(somme) {}
+public class Remboursement extends Cash {
 
+	@Override
+	public Remboursement (int somme)  {
+		 super(somme);
 	}
+
 }

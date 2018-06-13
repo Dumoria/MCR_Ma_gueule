@@ -3,17 +3,16 @@
 
 
 
-namespace MODEL{
-	class TraiterBeuglantes : Requete {
 
-		
-		public override bool doitTraiter(Receptionniste r) {
-			return true;
-		}
+class TraiterBeuglantes extends Requete {
 
-		
-		public override bool doitTraiter(Chef c) {
-			return true;
-		}
+	@Override
+	public bool doitTraiter(Receptionniste r) {
+		return true;
+	}
+
+	@Override	
+	public bool doitTraiter(Chef c) {
+		return true;
 	}
 }
