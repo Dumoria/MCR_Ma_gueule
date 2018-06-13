@@ -33,6 +33,17 @@ namespace MODEL{
 			this.difficulte = difficulte;
 	    }
 
+		public Goblin(Goblin goblin){
+			this.model = goblin.model;
+			this.id = nextId++;
+			this.emploi = goblin.emploi;
+			this.salaire = goblin.salaire; 
+			this.stress = 0;
+			this.collegue = goblin.collegue;
+			this.superieur = goblin.superieur;
+			this.difficulte = goblin.difficulte;
+		}
+
 	    public void partirEnGreve()
 	    {
 	        timer = new Timer(30);

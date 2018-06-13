@@ -1,8 +1,4 @@
-﻿/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+﻿
 using System.Collections.Generic;
 using System;
 using System.Timers;
@@ -140,12 +136,12 @@ namespace MODEL{
 	    public void engager()
 	    {
 			List<Goblin> tmp = (List<Goblin>) employes[(int) currentGoblin.getEmploi()];
-			tmp[tmp.Count - 1].setCollegue(currentGoblin);
 
-            //prob, devrait creer nouveau goblin
-			currentGoblin.setCollegue (tmp[0]);
-			currentGoblin.setSuperieur(tmp[0].getSuperieur());
-			tmp.Add(currentGoblin);
+			Goblin candidat = new Goblin (currentGoblin);
+			tmp[tmp.Count - 1].setCollegue(candidat);
+			candidat.setCollegue (tmp[0]);
+			candidat.setSuperieur(tmp[0].getSuperieur());
+			tmp.Add(candidat);
 	    }
 
 		public void engager(Goblin goblin)
