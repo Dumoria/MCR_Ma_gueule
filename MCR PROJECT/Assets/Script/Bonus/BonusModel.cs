@@ -7,7 +7,7 @@ namespace MODEL{
 	    private int cost;
 		public static int niveau=0;
 
-
+        
 		public BonusModel(int cost){
 			this.cost = cost;
 		}
@@ -18,7 +18,7 @@ namespace MODEL{
 				cost *= 2;
 			}
 		}
-
+        
 		public void setCost(int cost){
 			this.cost=cost;
 		}

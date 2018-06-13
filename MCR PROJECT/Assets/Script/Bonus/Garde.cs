@@ -5,9 +5,6 @@ using UnityEngine;
 namespace MODEL{
 	public class Garde : BonusModel {
 
-
 		public Garde() :base(){}
-
-	
 }
 }

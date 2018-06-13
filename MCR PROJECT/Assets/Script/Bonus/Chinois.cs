@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace MODEL{
 	public class Chinois : BonusModel {
 

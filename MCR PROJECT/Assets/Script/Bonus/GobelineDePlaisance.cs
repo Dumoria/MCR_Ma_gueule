@@ -5,6 +5,7 @@ using UnityEngine;
 namespace MODEL{
 	public class GobelineDePlaisance : BonusModel {
 
+
 		public GobelineDePlaisance():base(){}
 	}
 }

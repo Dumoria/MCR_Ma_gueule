@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MODEL{
 	public class PotDeVin : BonusModel {
-
+        
 		public PotDeVin():base(){}
 	}
 }
