@@ -4,5 +4,4 @@ using UnityEngine;
 
 public class PotDeVin : BonusModel {
 
-public PotDeVin:base(){}
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PoudreDePhenix : BonusModel {
 	public static int niveauPoudre=0;
-public PoudreDePhenix{}
 public int getNiveauPoudre(){
 	return niveauPoudre;
 }

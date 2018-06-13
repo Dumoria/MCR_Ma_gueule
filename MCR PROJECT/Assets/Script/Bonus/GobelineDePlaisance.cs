@@ -4,5 +4,4 @@ using UnityEngine;
 
 public class GobelineDePlaisance : BonusModel {
 
-public GobelineDePlaisance:base(){}
 }
