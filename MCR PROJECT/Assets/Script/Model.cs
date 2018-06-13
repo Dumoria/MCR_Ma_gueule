@@ -11,6 +11,7 @@ using System.Collections;
 namespace MODEL{
 	public class Model
 	{
+		private bool loose = false;
 	    private double argentCoffre = 3000;
 	    private int nbRequetes = 0;
 
@@ -58,6 +59,18 @@ namespace MODEL{
 			re.setCollegue (re);
 			engager (re);
 			currentGoblin = re;
+		}
+
+		public double getArgentCoffre(){
+			return argentCoffre;
+		}
+
+		public bool getLoose(){
+			return loose;
+		}
+
+		public void setLoose(){
+			loose = true;
 		}
 
 	    public void ajouterCoffre(double nbGold)
@@ -182,11 +195,6 @@ namespace MODEL{
 		public void selectionner(Goblin goblin)
 		{
 			currentGoblin = goblin;
-		}
-
-		public void generateAlEvent()
-		{
-
 		}
 	}
 }

@@ -23,6 +23,11 @@ namespace MODEL{
 		public int generateRandomAmount(){
 			return random.Next () % 2500;
 		}
+
+		public void generateAlEvent()
+		{
+
+		}
 			
 		public void start()
 		{
@@ -34,9 +39,11 @@ namespace MODEL{
 			if (nbTotRequetes % 50 == 0)
 				difficulte.niveauSuperieur();
 
-			flotRequetes = new Timer(difficulte.getDebitRequetes());
-			flotRequetes.Elapsed += (sender, EventArgs) => start();
-			flotRequetes.Start();
+			if (!Model.getLoose()) {
+				flotRequetes = new Timer (difficulte.getDebitRequetes ());
+				flotRequetes.Elapsed += (sender, EventArgs) => start ();
+				flotRequetes.Start ();
+			}
 
 		}
 

@@ -11,6 +11,8 @@ namespace MODEL{
 
 	    public new void valider(Retrait retrait)
 	    {
+			if (model.getArgentCoffre () - retrait.getSomme () < 0)
+				model.setLoose();
 			model.ajouterCoffre(-1 * retrait.getSomme());
 			passerSuperieur(retrait);
 	        occupe = false;
@@ -32,6 +34,8 @@ namespace MODEL{
 
 	    public new void valider(Emprunt emprunt)
 	    {
+			if (model.getArgentCoffre () - emprunt.getSomme () < 0)
+				return;
 			model.ajouterCoffre(-1 * emprunt.getSomme());
 			passerSuperieur(emprunt);
 	        occupe = false;

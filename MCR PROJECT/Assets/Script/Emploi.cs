@@ -25,5 +25,9 @@ namespace MODEL{
 		public static double getSalaire(int index){
 			return salaires[index];
 		}
+
+		public static double getSalaire(Emploi emploi){
+			return salaires[(int) emploi];
+		}
 	}
 }
