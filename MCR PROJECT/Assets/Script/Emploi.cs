@@ -1,4 +1,6 @@
-﻿namespace MODEL{
+﻿using System.Collections.Generic;
+
+namespace MODEL{
 	public enum Emploi
 	{
 	    Receptionniste = 0,
@@ -8,12 +10,20 @@
 	    Chef = 4
 	}
 
-	public enum Salaire
+	public class Salaire
 	{
-		Receptionniste = 100,
-		Coffrier = 150,
-		Tresorier = 225,
-		Tamponeur = 337.5,
-		Chef = 506.25
+		private static List<double> salaires;
+
+		public Salaire(){
+			salaires.Add (100);
+			salaires.Add (150);
+			salaires.Add (225);
+			salaires.Add (337.5);
+			salaires.Add (506.25);
+		}
+
+		public static double getSalaire(int index){
+			return salaires[index];
+		}
 	}
 }

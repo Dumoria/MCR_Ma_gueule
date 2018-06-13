@@ -19,6 +19,10 @@ namespace MODEL{
 			this.firstRecep = firstRecep;
 			this.difficulte = difficulte;
 		}
+
+		public int generateRandomAmount(){
+			return random.Next () % 2500;
+		}
 			
 		public void start()
 		{
@@ -32,7 +36,7 @@ namespace MODEL{
 
 			flotRequetes = new Timer(difficulte.getDebitRequetes());
 			flotRequetes.Elapsed += (sender, EventArgs) => start();
-			flotRequetes.Start;
+			flotRequetes.Start();
 
 		}
 
@@ -45,37 +49,36 @@ namespace MODEL{
 			switch (typeRequete)
 			{
 			case 0:
-				//requete = new CertificatFortune();
+				return new CertificatFortune(generateRandomAmount());
 				break;
 			case 1:
-				//requete = new Retrait();
+				return new Retrait(generateRandomAmount());
 				break;
 			case 2:
-				//requete = new Depot();
+				return new Depot(generateRandomAmount());
 				break;
 			case 3:
-				//requete = new Remboursement();
+				return new Remboursement(generateRandomAmount());
 				break;
 			case 4:
-				//requete = new Emprunt();
+				return new Emprunt(generateRandomAmount());
 				break;
 			case 5:
-				requete = new PayementSalaire();
+				return new PayementSalaire();
 				break;
 			case 6:
-				requete = new MiroirDoubleSens();
+				return new MiroirDoubleSens();
 				break;
 			case 7:
-				requete = new OuvrirCompte();
+				return new OuvrirCompte();
 				break;
 			case 8:
-				requete = new TraiterBeuglantes();
+				return new TraiterBeuglantes();
 				break;
 			default:
-				break;
+				return null;
 
 			}
-			return requete;
 
 		}
     }
